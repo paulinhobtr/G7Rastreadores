@@ -23,7 +23,7 @@
 
 
 <style>
-@media (max-width: 910px) {
+
 /* =====================================================
    RESET
 ===================================================== */
@@ -1400,115 +1400,152 @@ footer {
 /* =====================================================
    RESPONSIVO
 ===================================================== */
-}
-@media (max-width: 900px) {
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 90%;
+    }
+
+    /* HEADER */
+    .header {
+        min-height: 65px;
+        gap: 10px;
+    }
+
+    .logo img {
+        width: 180px;
+    }
 
     .menu {
-        display:
-            none;
+        display: none;
     }
 
+    /* HERO */
     .hero {
-        padding:
-            7px 0;
+        padding: 70px 0 60px;
     }
 
-    .hero-content,
-    .history {
-        grid-template-columns:
-            1fr;
-    }
-
-    .hero {
-        text-align:
-            center;
-    }
-
-    .hero-description {
-        margin-left:
-            auto;
-
-        margin-right:
-            auto;
-    }
-
-    .hero-buttons {
-        justify-content:
-            center;
-    }
-
-    .dashboard {
-        max-width:
-            600px;
-
-        width:
-            100%;
-
-        margin:
-            20px auto 0;
-    }
-
-    .benefits {
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .app-info {
-        grid-template-columns:
-            1fr 1fr;
-    }
-    
-    .h1testotopo {
-        font-size: 8px;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .benefits,
-    .app-info {
-        grid-template-columns:
-            1fr;
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: center;
     }
 
     .hero h1 {
-               display: flex;
-        font-size: 30px;
-        flex-direction: column-reverse;
-        background: black;
-        height: 200px;
-        align-items: center;
-        justify-content: center;
-                border-radius: 20px;
+        font-size: 38px;
+        line-height: 1.1;
     }
 
+    .hero h1 span {
+        font-size: 22px;
+    }
 
     .hero-description {
-        font-size:
-            16px;
+        font-size: 16px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .btn {
-        width:
-            100%;
+    .hero-buttons {
+        justify-content: center;
     }
 
-    .download h2 {
-        font-size:
-            34px;
+    /* IMAGEM/APRESENTAÇÃO */
+    .fotoApresentacao {
+        height: auto;
+        min-height: 280px;
+        width: 100%;
+    }
+
+    .hteste {
+        font-size: 26px;
+    }
+
+    /* DASHBOARD */
+    .dashboard {
+        transform: none;
+        padding: 15px;
     }
 
     .map {
-        height:
-            270px;
+        height: 250px;
     }
-    .h1testotopo {
-        font-size: 8px;
-    }
-    .hteste{
 
+    /* SEÇÕES */
+    section {
+        padding: 60px 0;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    /* BENEFÍCIOS */
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    /* HISTÓRICO */
+    .history {
+        grid-template-columns: 1fr;
+    }
+
+    /* ALERTA */
+    .alert-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .alert-icon {
+        margin: auto;
+    }
+
+    /* DADOS APP */
+    .app-info {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* PLANOS */
+    .planos-section {
+        padding: 60px 15px;
+    }
+
+    .planos-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .planos-topo h2 {
+        font-size: 29px;
+    }
+
+    .plano-card {
+        padding: 30px 22px;
+    }
+
+    .preco strong {
+        font-size: 31px;
+    }
+
+    /* DOWNLOAD */
+    .download {
+        padding: 65px 0;
+    }
+
+    .download h2 {
+        font-size: 32px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+        width: 55px;
+        height: 55px;
+        right: 15px;
+        bottom: 15px;
     }
 }
 
