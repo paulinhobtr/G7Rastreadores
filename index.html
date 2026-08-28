@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="theme-color"
+        content="#06111f">
+
+    <meta
+        name="description"
+        content="Aplicativo para Rastreamento Veicular. Monitore seu veículo, consulte históricos, rotas, eventos e receba alertas diretamente no celular.">
+
+    <title>
+        Rastreamento Veicular | Segurança e Controle
+    </title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #06111f;
+    color: #ffffff;
+
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 92%;
+    max-width: 1180px;
+    margin: auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,.96) 30%,
+       
+        rgba(8, 44, 92, 0.96) 100%
+    );
+    backdrop-filter:
+        blur(12px);
+
+     border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.header {
+
+    min-height: 74px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.logo {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+.logo span {
+    color: #18c8ff;
+}
+
+.menu {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+.menu a {
+
+    color: #c7d4e2;
+
+    font-size: 14px;
+
+    transition: .3s;
+}
+
+.menu a:hover {
+    color: #18c8ff;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        14px 23px;
+
+    border-radius:
+        10px;
+
+    font-weight:
+        700;
+
+    transition:
+        .3s;
+}
+
+.btn-primary {
+
+    background:
+        #18c8ff;
+
+    color:
+        #00101b;
+
+    box-shadow:
+        0 10px 30px
+        rgba(24,200,255,.20);
+}
+
+.btn-primary:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #55d8ff;
+}
+
+.btn-outline {
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        #ffffff;
+}
+
+.btn-outline:hover {
+
+    background:
+        rgba(255,255,255,.09);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        100px 0 110px;
+}
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    right: -200px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background:
+        #008cff;
+
+    opacity:
+        .10;
+
+    filter:
+        blur(100px);
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.tag {
+
+    display: inline-block;
+
+    padding:
+        8px 14px;
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(24,200,255,.09);
+
+    border:
+        1px solid
+        rgba(24,200,255,.22);
+
+    color:
+        #5bdcff;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        22px;
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(42px, 5vw, 70px);
+
+    line-height:
+        1.04;
+
+    margin-bottom:
+        24px;
+}
+
+.hero h1 span {
+    color:
+        #18c8ff;
+        font-size: 25px;
+}
+
+.hero-description {
+
+    max-width:
+        670px;
+
+    color:
+        #aebed0;
+
+    font-size:
+        19px;
+
+    margin-bottom:
+        30px;
+}
+
+.hero-buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+}
+
+
+/* =====================================================
+   PAINEL VISUAL
+===================================================== */
+
+.dashboard {
+
+    background:
+        linear-gradient(
+            145deg,
+            #10263c,
+            #07111d
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:
+        24px;
+
+    padding:
+        20px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.40);
+
+    transform:
+        rotate(2deg);
+}
+
+.dashboard-top {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        18px;
+}
+
+.dashboard-title {
+
+    font-weight:
+        800;
+}
+
+.online {
+
+    color:
+        #55e69a;
+
+    font-size:
+        13px;
+}
+
+.map {
+
+    height:
+        330px;
+
+    border-radius:
+        18px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    background:
+        #0a1725;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+}
+
+.road {
+
+    position:
+        absolute;
+
+    height:
+        3px;
+
+    width:
+        130%;
+
+    background:
+        rgba(255,255,255,.10);
+
+    transform:
+        rotate(-25deg);
+
+    top:
+        45%;
+
+    left:
+        -10%;
+}
+
+.road.two {
+
+    transform:
+        rotate(35deg);
+
+    top:
+        55%;
+}
+
+.location {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:
+        54px;
+
+    height:
+        54px;
+
+    border-radius:
+        50%;
+
+    background:
+        #18c8ff;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        #00101b;
+
+    font-size:
+        24px;
+
+    box-shadow:
+        0 0 0 14px
+        rgba(24,200,255,.12);
+}
+
+.vehicle-info {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        10px;
+
+    margin-top:
+        12px;
+}
+
+.info-box {
+
+    padding:
+        14px;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+.info-box small {
+
+    display:
+        block;
+
+    color:
+        #8499ae;
+
+    font-size:
+        11px;
+}
+
+.info-box strong {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+}
+
+
+/* =====================================================
+   SEÇÕES
+===================================================== */
+
+section {
+    padding:
+        90px 0;
+}
+
+.section-title {
+
+    text-align:
+        center;
+
+    margin-bottom:
+        45px;
+}
+
+.section-title h2 {
+
+    font-size:
+        40px;
+
+    margin-bottom:
+        10px;
+}
+
+.section-title p {
+
+    color:
+        #91a5bb;
+}
+
+
+/* =====================================================
+   BENEFÍCIOS
+===================================================== */
+
+.benefits {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        20px;
+}
+
+.card {
+
+    padding:
+        28px;
+
+    background:
+        #0b1928;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius:
+        18px;
+
+    transition:
+        .3s;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(24,200,255,.25);
+}
+
+.icon {
+
+    width:
+        54px;
+
+    height:
+        54px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(24,200,255,.10);
+
+    font-size:
+        25px;
+
+    margin-bottom:
+        18px;
+}
+
+.card h3 {
+
+    margin-bottom:
+        9px;
+}
+
+.card p {
+
+    color:
+        #91a5bb;
+
+    font-size:
+        15px;
+}
+
+
+/* =====================================================
+   PRINCIPAL MENSAGEM
+===================================================== */
+
+.highlight {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, .06);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    text-align: center;
+}
+
+/* Vídeo de fundo */
+.highlight-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Escurece o vídeo */
+.highlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 17, 31, .65);
+    z-index: 1;
+}
+
+/* Conteúdo fica acima do vídeo */
+.highlight-content {
+    position: relative;
+    z-index: 2;
+}
+.highlight h2 {
+
+    font-size:
+        clamp(30px,4vw,48px);
+
+    margin-bottom:
+        18px;
+}
+
+.highlight p {
+
+    max-width:
+        780px;
+
+    margin:
+        auto;
+
+    color:
+        #aebed0;
+
+    font-size:
+        18px;
+}
+
+
+/* =====================================================
+   HISTÓRICO / ROTAS
+===================================================== */
+
+.history {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        25px;
+}
+
+.history-card {
+
+    padding:
+        30px;
+
+    background:
+        #0b1928;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius:
+        20px;
+}
+
+.history-item {
+
+    display:
+        flex;
+
+    gap:
+        15px;
+
+    padding:
+        18px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+}
+
+.history-item:last-child {
+    border-bottom:
+        none;
+}
+
+.history-icon {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    flex-shrink:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(24,200,255,.10);
+}
+
+.history-item p {
+
+    color:
+        #91a5bb;
+
+    font-size:
+        14px;
+}
+
+
+/* =====================================================
+   ALERTAS
+===================================================== */
+
+.alert-box {
+
+    padding:
+        30px;
+
+    border-radius:
+        20px;
+
+    background:
+        #0b1928;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    display:
+        grid;
+
+    grid-template-columns:
+        auto 1fr;
+
+    gap:
+        20px;
+
+    align-items:
+        center;
+}
+
+.alert-icon {
+
+    width:
+        70px;
+
+    height:
+        70px;
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(255,180,0,.10);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        32px;
+}
+
+.alert-box p {
+    color:
+        #91a5bb;
+}
+
+
+/* =====================================================
+   DADOS DO APLICATIVO
+===================================================== */
+
+.app-info {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        15px;
+}
+
+.app-detail {
+
+    padding:
+        22px;
+
+    background:
+        #0b1928;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius:
+        15px;
+}
+
+.app-detail small {
+
+    display:
+        block;
+
+    color:
+        #71849a;
+
+    margin-bottom:
+        5px;
+}
+
+.app-detail strong {
+
+    font-size:
+        16px;
+}
+
+
+/* =====================================================
+   DOWNLOAD
+===================================================== */
+
+.download {
+
+    text-align:
+        center;
+
+    padding:
+        100px 0;
+}
+
+.download h2 {
+
+    font-size:
+        44px;
+
+    margin-bottom:
+        15px;
+}
+
+.download p {
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        #aebed0;
+
+    font-size:
+        18px;
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp {
+
+    position:
+        fixed;
+
+    right:
+        22px;
+
+    bottom:
+        22px;
+
+    width:
+        60px;
+
+    height:
+        60px;
+
+    border-radius:
+        50%;
+
+    background:
+        #25d366;
+
+    color:
+        white;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        28px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.35);
+
+    z-index:
+        2000;
+
+    transition:
+        .3s;
+}
+
+.whatsapp:hover {
+    transform:
+        scale(1.08);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    padding:
+        35px 0;
+
+    text-align:
+        center;
+
+    color:
+        #71849a;
+
+    font-size:
+        13px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 300px;
+    height: auto;
+    display: block;
+    opacity: 5.15;
+}
+.logos img {
+    width: 60px;
+    height: auto;
+    display: block;
+    opacity: 1.75;
+}
+.fotoApresentacao{
+    height: 400px;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+.hteste{
+    color: #333
+}
+
+/* =====================================================
+   BENEFÍCIOS COM VÍDEO DE FUNDO
+===================================================== */
+
+#beneficios {
+    position: relative;
+    overflow: hidden;
+
+    padding: 90px 0;
+
+    background: #06111f;
+}
+
+/* Vídeo de fundo */
+#beneficios .video-background {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+/* Escurece o vídeo para o conteúdo ficar legível */
+#beneficios::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(6, 17, 31, 0.82);
+
+    z-index: 1;
+}
+
+/* Conteúdo fica por cima do vídeo */
+#beneficios .container {
+    position: relative;
+
+    z-index: 2;
+}
+/* =====================================================
+   VÍDEO
+===================================================== */
+
+.video-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 45px;
+    border-radius: 22px;
+    overflow: hidden;
+
+    background: #000;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.40);
+}
+
+.video-container video {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 520px;
+
+    object-fit: cover;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 70px;
+    align-items: center;
+}
+
+/* Vídeo de fundo */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Camada escura sobre o vídeo */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.50);
+    z-index: -1;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.planos-section {
+    padding: 70px 20px;
+    background: #f7f9fc;
+    font-family: Arial, sans-serif;
+}
+
+.planos-topo {
+    max-width: 750px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.planos-topo h2 {
+    margin: 0 0 12px;
+    font-size: 36px;
+    color: #111827;
+}
+
+.planos-topo p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.planos-container {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.plano-card {
+    position: relative;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    transition: 0.3s;
+}
+
+.plano-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+}
+
+.plano-popular {
+    border: 2px solid #16a34a;
+}
+
+.badge-popular {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #16a34a;
+    color: white;
+    padding: 7px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.plano-header h3 {
+    margin: 0;
+    font-size: 27px;
+    color: #111827;
+}
+
+.plano-header p {
+    margin-top: 8px;
+    color: #6b7280;
+    min-height: 40px;
+}
+
+.preco {
+    margin: 28px 0;
+}
+
+.preco small {
+    display: block;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.preco strong {
+    font-size: 36px;
+    color: #111827;
+}
+
+.preco span {
+    color: #6b7280;
+    font-size: 16px;
+}
+
+.beneficios {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+}
+
+.beneficios li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+    color: #374151;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.btn-plano {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 15px 20px;
+    background: #16a34a;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+.btn-plano:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+}
+.planos-section {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 20px;
+    min-height: 700px;
+}
+
+/* VÍDEO OCUPANDO TODO O FUNDO */
+.video-fundo {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+/* CAMADA ESCURA SOBRE O VÍDEO */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 1;
+}
+
+/* CONTEÚDO FICA NA FRENTE */
+.planos-conteudo {
+    position: relative;
+    z-index: 2;
+}
+
+/* TEXTO DO TÍTULO */
+.planos-topo h2 {
+    color: #ffffff;
+}
+
+
+    .planos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .planos-topo h2 {
+        font-size: 29px;
+    }
+
+    .plano-card {
+        padding: 30px 22px;
+    }
+
+    .preco strong {
+        font-size: 31px;
+    }
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .menu {
+        display:
+            none;
+    }
+
+    .hero {
+        padding:
+            7px 0;
+    }
+
+    .hero-content,
+    .history {
+        grid-template-columns:
+            1fr;
+    }
+
+    .hero {
+        text-align:
+            center;
+    }
+
+    .hero-description {
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+    .hero-buttons {
+        justify-content:
+            center;
+    }
+
+    .dashboard {
+        max-width:
+            600px;
+
+        width:
+            100%;
+
+        margin:
+            20px auto 0;
+    }
+
+    .benefits {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .app-info {
+        grid-template-columns:
+            1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .benefits,
+    .app-info {
+        grid-template-columns:
+            1fr;
+    }
+
+    .hero h1 {
+               display: flex;
+        font-size: 30px;
+        flex-direction: column-reverse;
+        background: black;
+        height: 200px;
+        align-items: center;
+        justify-content: center;
+                border-radius: 20px;
+    }
+
+
+    .hero-description {
+        font-size:
+            16px;
+    }
+
+    .btn {
+        width:
+            100%;
+    }
+
+    .download h2 {
+        font-size:
+            34px;
+    }
+
+    .map {
+        height:
+            270px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+    <div class="container header">
+<div class="logos">
+    <img src="WhatsApp Image 2026-08-26 at 12.31.54.jpeg" alt="">
+</div>
+       <h1 class="hteste">Rastreamento Veicular</h1>
+        <nav class="menu">
+
+            <a href="#beneficios">
+                Benefícios
+            </a>
+
+            <a href="#historico">
+                Histórico
+            </a>
+
+            <a href="#alertas">
+                Alertas
+            </a>
+
+            <a
+                href="https://play.google.com/store/apps/details?id=com.smartgpsclient.G7Gpsv39&hl=pt_BR"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary">
+
+                 Baixar aplicativo
+
+            </a>
+
+        </nav>
+
+    </div>
+
+
+</header>
+
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero">
+ <video class="hero-video" autoplay muted loop playsinline>
+        <source src="113321-697585650_medium.mp4" type="video/mp4">
+    </video>
+    <div class="container hero-content">
+
+        <div>
+
+            <div class="tag">
+                 Aplicativo para Rastreamento Veicular
+            </div>
+
+            <h1 style="    font-size: 58px;">
+                
+                SEU VEÍCULO.
+                <br>
+                SEU CONTROLE.
+                <br>
+                SUA SEGURANÇA.
+                <br>
+                
+                <br>
+                <span>Há mais de 10 anos protegendo o seu veículo.</span>
+            </h1>
+
+            <p class="hero-description">
+
+                Oferecemos praticidade, conforto e segurança.
+                Você monitora o seu bem material, seu funcionário
+                ou seu ente querido a qualquer momento e em
+                qualquer lugar.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="https://play.google.com/store/apps/details?id=com.smartgpsclient.G7Gpsv39&hl=pt_BR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary">
+
+                     Baixar aplicativo
+
+                </a>
+
+                <a
+                    href="#beneficios"
+                    class="btn btn-outline">
+
+                    Conheça o sistema
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAINEL VISUAL -->
+<div class="fotoApresentacao">         
+<div class="logo">
+    <img src="WhatsApp Image 2026-08-26 at 12.31.54.jpeg" alt="">
+</div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     BENEFÍCIOS
+================================================== -->
+
+<section id="beneficios">
+
+    <!-- VÍDEO DE FUNDO -->
+    <video
+        class="video-background"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata">
+
+        <source src="19627-304735769_medium.mp4" type="video/mp4">
+
+    </video>
+
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Tudo o que você precisa para acompanhar
+            </h2>
+
+            <p>
+                Mais praticidade para acompanhar suas informações
+                de rastreamento.
+            </p>
+
+        </div>
+
+
+        <div class="benefits">
+
+            <div class="card">
+
+                <h3>
+                    Localização em Tempo Real
+                </h3>
+
+                <p>
+                    Acompanhe seu veículo a qualquer momento, de qualquer lugar, através do nosso app.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Recuperação Veicular
+                </h3>
+
+                <p>
+                    Sistema especializado em recuperação com alta taxa de sucesso e equipe treinada.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Histórico de Rotas
+                </h3>
+
+                <p>
+                    Relatórios detalhados de trajetos, paradas e horários para controle total.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Alerta de Movimento
+                </h3>
+
+                <p>
+                   Notificações instantâneas quando seu veículo for movimentado sem autorização.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Controle de Velocidade
+                </h3>
+
+                <p>
+                    Monitoramento de velocidade com alertas personalizáveis para segurança.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Cerca Eletrônica
+                </h3>
+
+                <p>
+                    Defina áreas seguras e receba alertas quando o veículo sair da zona permitida.
+
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     MENSAGEM PRINCIPAL
+================================================== -->
+
+<section class="highlight">
+<video class="highlight-video" autoplay muted loop playsinline>
+        <source src="1900-151662242.mp4" type="video/mp4">
+    </video>
+    <div class="highlight-content">
+
+        <h2>
+            Pronto para proteger seu veículo?
+        </h2>
+
+        <p>
+
+            Junte-se a milhares de clientes satisfeitos que já protegem seus veículos conosco.
+
+            Tenha as informações do rastreamento na palma
+            da sua mão.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     HISTÓRICO E ROTAS
+================================================== -->
+
+<section id="historico">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Histórico, rotas e eventos
+            </h2>
+
+            <p>
+                Consulte informações importantes diretamente
+                pelo aplicativo.
+            </p>
+
+        </div>
+
+
+        <div class="history">
+
+
+            <div class="history-card">
+
+                <h3>
+                     Histórico e rotas
+                </h3>
+
+
+                <div class="history-item">
+
+                    
+
+                    <div>
+
+                        <strong>
+                            Histórico
+                        </strong>
+
+                        <p>
+                            Consulte informações anteriores
+                            disponibilizadas pelo rastreamento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-item">
+
+                    
+
+                    <div>
+
+                        <strong>
+                            Rotas
+                        </strong>
+
+                        <p>
+                            Visualize as rotas registradas
+                            pelo sistema.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-item">
+
+                    
+
+                    <div>
+
+                        <strong>
+                            Eventos
+                        </strong>
+
+                        <p>
+                            Consulte eventos registrados
+                            durante o acompanhamento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="history-card">
+
+                <h3>
+                     Acompanhamento
+                </h3>
+
+
+                <div class="history-item">
+
+                   
+
+                    <div>
+
+                        <strong>
+                            Seu veículo
+                        </strong>
+
+                        <p>
+                            Acompanhe seu bem material
+                            através do aplicativo.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-item">
+
+                   
+
+                    <div>
+
+                        <strong>
+                            Funcionário
+                        </strong>
+
+                        <p>
+                            Tenha mais controle sobre veículos
+                            utilizados por sua equipe.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-item">
+
+                   
+
+                    <div>
+
+                        <strong>
+                            Ente querido
+                        </strong>
+
+                        <p>
+                            Acompanhe informações do rastreamento
+                            de onde estiver.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     ALERTAS
+================================================== -->
+
+<section id="alertas">
+
+    <div class="container">
+
+        <div class="alert-box">
+
+           
+
+            <div>
+
+                <h2>
+                    Receba alertas no seu celular
+                </h2>
+
+                <p>
+
+                    Receba notificações de alertas diversos
+                    diretamente na tela do seu celular e tenha
+                    mais praticidade para acompanhar os eventos
+                    do seu rastreamento.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="planos-section">
+    <!-- VÍDEO DE FUNDO -->
+    <video class="video-fundo" autoplay muted loop playsinline>
+        <source src="218014_medium (1).mp4" type="video/mp4">
+    </video>
+
+    <!-- ESCURECE O VÍDEO PARA MELHORAR A LEITURA -->
+    <div class="video-overlay"></div>
+    <div class="planos-conteudo">
+    <div class="planos-topo">
+        <h2>Planos e Preços</h2>
+        <p>
+            Escolha o plano ideal para suas necessidades.
+            Todos incluem instalação gratuita e não há fidelidade.
+        </p>
+    </div>
+
+    <div class="planos-container">
+
+        <!-- PLANO BÁSICO -->
+        <div class="plano-card">
+            <div class="plano-header">
+                <h3>Básico</h3>
+                <p>Plano de Rastreamento</p>
+            </div>
+
+            <div class="preco">
+                <strong>R$ 39,90</strong>
+                <span>/mês</span>
+            </div>
+
+            <ul class="beneficios">
+                <li>✓ Localização em tempo real</li>
+                <li>✓ Aplicativo mobile</li>
+                <li>✓ Relatórios básicos</li>
+                <li>✓ Suporte por email</li>
+            </ul>
+
+            <a href="https://wa.me/5511999999999?text=Olá,%20tenho%20interesse%20no%20Plano%20Básico"
+               class="btn-plano">
+                Assinar Básico
+            </a>
+        </div>
+
+
+        <!-- PLANO COMPLETO -->
+        <div class="plano-card plano-popular">
+
+            <div class="badge-popular">
+                Mais Popular
+            </div>
+
+            <div class="plano-header">
+                <h3>Completo</h3>
+                <p>Rastreamento + Assistência Veicular</p>
+            </div>
+
+            <div class="preco">
+                <small>A partir de</small>
+                <strong>R$ 69,80</strong>
+                <span>/mês</span>
+            </div>
+
+            <ul class="beneficios">
+                <li> Tudo do plano Básico</li>
+                <li> Auxílio Mecânico e Elétrico</li>
+                <li> Pane Seca</li>
+                <li> Chaveiro</li>
+                <li> Troca de Pneus</li>
+                <li> Reboque até 300 km</li>
+                <li> Transporte para retirada</li>
+                <li> Retorno ao domicílio</li>
+                <li> Transmissão de mensagens urgentes</li>
+                <li> Táxi até R$100</li>
+                <li> Guarda de veículo</li>
+                <li> Motorista Substituto até 400 km</li>
+            </ul>
+
+            <a href="https://wa.me/5511999999999?text=Olá,%20tenho%20interesse%20no%20Plano%20Completo"
+               class="btn-plano">
+                Assinar Completo
+            </a>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!-- ==================================================
+     DADOS DO APLICATIVO
+================================================== -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Aplicativo
+            </h2>
+
+            <p>
+                Informações do aplicativo de rastreamento.
+            </p>
+
+        </div>
+
+
+        <div class="app-info">
+
+
+            <div class="app-detail">
+
+                <small>
+                    Versão
+                </small>
+
+                <strong>
+                    4.2
+                </strong>
+
+            </div>
+
+
+            <div class="app-detail">
+
+                <small>
+                    Android
+                </small>
+
+                <strong>
+                    Android 5.0 ou superior
+                </strong>
+
+            </div>
+
+
+            <div class="app-detail">
+
+                <small>
+                    Tamanho
+                </small>
+
+                <strong>
+                    13 MB
+                </strong>
+
+            </div>
+
+
+            <div class="app-detail">
+
+                <small>
+                    Downloads
+                </small>
+
+                <strong>
+                    1.000+
+                </strong>
+
+            </div>
+
+
+            <div class="app-detail">
+
+                <small>
+                    Lançamento
+                </small>
+
+                <strong>
+                    10 de junho de 2021
+                </strong>
+
+            </div>
+
+
+            <div class="app-detail">
+
+                <small>
+                    Atualizado
+                </small>
+
+                <strong>
+                    16 de janeiro de 2023
+                </strong>
+
+            </div>
+
+
+            <div class="app-detail">
+
+                <small>
+                    Desenvolvedor
+                </small>
+
+                <strong>
+                    Grupo 7 Motos
+                </strong>
+
+            </div>
+
+
+            <div class="app-detail">
+
+                <small>
+                    Classificação
+                </small>
+
+                <strong>
+                    Livre
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     DOWNLOAD
+================================================== -->
+
+<section class="download">
+
+    <div class="container">
+
+        <h2>
+            Tenha o rastreamento na palma da mão.
+        </h2>
+
+        <p>
+
+            Baixe o aplicativo de Rastreamento Veicular
+            e acompanhe seu veículo a qualquer momento
+            e em qualquer lugar.
+
+        </p>
+
+
+        <a
+            href="https://play.google.com/store/apps/details?id=com.smartgpsclient.G7Gpsv39&hl=pt_BR"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary">
+
+             BAIXAR APLICATIVO
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     WHATSAPP
+================================================== -->
+
+
+
+<a
+    href="https://wa.me/5511999999999?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+o+Rastreamento+Veicular."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp"
+    aria-label="Falar no WhatsApp">
+
+    💬
+
+</a>
+
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <p>
+
+            © 2026
+            Rastreamento Veicular.
+
+            Todos os direitos reservados.
+
+        </p>
+
+        <p style="margin-top:8px;">
+
+            Aplicativo desenvolvido por
+            Grupo 7 Motos.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
+```
