@@ -1081,7 +1081,8 @@ footer {
     border-radius: 20px;
 }
 .hteste{
-    color: #333
+    color: #333;
+    font-size:35px;
 }
 
 /* =====================================================
@@ -1274,7 +1275,14 @@ footer {
     color: #6b7280;
     min-height: 40px;
 }
-
+.planos-container {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: start;
+}
 .preco {
     margin: 28px 0;
 }
@@ -1386,6 +1394,9 @@ footer {
     .preco strong {
         font-size: 31px;
     }
+    .h1testotopo {
+        font-size: 58px;
+    }
 /* =====================================================
    RESPONSIVO
 ===================================================== */
@@ -1446,7 +1457,12 @@ footer {
         grid-template-columns:
             1fr 1fr;
     }
+    
+    .h1testotopo {
+        font-size: 8px;
+    }
 }
+
 
 @media (max-width: 600px) {
 
@@ -1486,6 +1502,9 @@ footer {
     .map {
         height:
             270px;
+    }
+    .h1testotopo {
+        font-size: 8px;
     }
 }
 
@@ -1556,7 +1575,7 @@ footer {
                  Aplicativo para Rastreamento Veicular
             </div>
 
-            <h1 style="    font-size: 58px;">
+            <h1 class="h1testotopo" style="    font-size: 58px;">
                 
                 SEU VEÍCULO.
                 <br>
