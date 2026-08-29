@@ -1393,6 +1393,201 @@ footer {
     .preco strong {
         font-size: 31px;
     }
+    /* =====================================================
+   DEPOIMENTOS
+===================================================== */
+
+.depoimentos {
+    padding: 100px 0;
+    background: #06111f;
+}
+
+.depoimentos-topo {
+    max-width: 700px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.depoimentos-tag {
+    display: inline-block;
+    padding: 7px 15px;
+    margin-bottom: 15px;
+
+    border-radius: 30px;
+    border: 1px solid rgba(24, 200, 255, .25);
+
+    background: rgba(24, 200, 255, .08);
+    color: #18c8ff;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.depoimentos-topo h2 {
+    margin-bottom: 12px;
+    font-size: 40px;
+    color: #fff;
+}
+
+.depoimentos-topo p {
+    color: #91a5bb;
+    font-size: 17px;
+}
+
+/* GRID */
+
+.depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* CARD */
+
+.depoimento-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 280px;
+    padding: 30px;
+
+    background: linear-gradient(
+        145deg,
+        #0d2033,
+        #091725
+    );
+
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.20);
+
+    transition: .3s;
+}
+
+.depoimento-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(24,200,255,.30);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.30);
+}
+
+/* ESTRELAS */
+
+.estrelas {
+    margin-bottom: 18px;
+
+    color: #ffc107;
+
+    font-size: 19px;
+    letter-spacing: 3px;
+}
+
+/* TEXTO */
+
+.depoimento-texto {
+    flex: 1;
+
+    margin: 0 0 25px;
+
+    color: #c3cfdb;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* CLIENTE */
+
+.cliente {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.cliente-avatar {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #18c8ff,
+        #0879d9
+    );
+
+    color: #00101b;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 0 5px rgba(24,200,255,.08);
+}
+
+.cliente strong {
+    display: block;
+    margin-bottom: 2px;
+
+    color: #fff;
+    font-size: 15px;
+}
+
+.cliente span {
+    display: block;
+
+    color: #71849a;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   DEPOIMENTOS - CELULAR
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .depoimentos {
+        padding: 65px 0;
+    }
+
+    .depoimentos-topo {
+        margin-bottom: 35px;
+    }
+
+    .depoimentos-topo h2 {
+        font-size: 30px;
+    }
+
+    .depoimentos-topo p {
+        font-size: 15px;
+    }
+
+    .depoimentos-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .depoimento-card {
+        min-height: auto;
+        padding: 24px 20px;
+    }
+
+    .depoimento-texto {
+        font-size: 15px;
+    }
+}
 /* =====================================================
    RESPONSIVO
 ===================================================== */
@@ -1544,7 +1739,201 @@ footer {
         bottom: 15px;
     }
 }
+/* =====================================================
+   DEPOIMENTOS
+===================================================== */
 
+.depoimentos {
+    padding: 100px 0;
+    background: #06111f;
+}
+
+.depoimentos-topo {
+    max-width: 700px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.depoimentos-tag {
+    display: inline-block;
+    padding: 7px 15px;
+    margin-bottom: 15px;
+
+    border-radius: 30px;
+    border: 1px solid rgba(24, 200, 255, .25);
+
+    background: rgba(24, 200, 255, .08);
+    color: #18c8ff;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.depoimentos-topo h2 {
+    margin-bottom: 12px;
+    font-size: 40px;
+    color: #fff;
+}
+
+.depoimentos-topo p {
+    color: #91a5bb;
+    font-size: 17px;
+}
+
+/* GRID */
+
+.depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+/* CARD */
+
+.depoimento-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 280px;
+    padding: 30px;
+
+    background: linear-gradient(
+        145deg,
+        #0d2033,
+        #091725
+    );
+
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.20);
+
+    transition: .3s;
+}
+
+.depoimento-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(24,200,255,.30);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.30);
+}
+
+/* ESTRELAS */
+
+.estrelas {
+    margin-bottom: 18px;
+
+    color: #ffc107;
+
+    font-size: 19px;
+    letter-spacing: 3px;
+}
+
+/* TEXTO */
+
+.depoimento-texto {
+    flex: 1;
+
+    margin: 0 0 25px;
+
+    color: #c3cfdb;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* CLIENTE */
+
+.cliente {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.cliente-avatar {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #18c8ff,
+        #0879d9
+    );
+
+    color: #00101b;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 0 5px rgba(24,200,255,.08);
+}
+
+.cliente strong {
+    display: block;
+    margin-bottom: 2px;
+
+    color: #fff;
+    font-size: 15px;
+}
+
+.cliente span {
+    display: block;
+
+    color: #71849a;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   DEPOIMENTOS - CELULAR
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .depoimentos {
+        padding: 65px 0;
+    }
+
+    .depoimentos-topo {
+        margin-bottom: 35px;
+    }
+
+    .depoimentos-topo h2 {
+        font-size: 30px;
+    }
+
+    .depoimentos-topo p {
+        font-size: 15px;
+    }
+
+    .depoimentos-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .depoimento-card {
+        min-height: auto;
+        padding: 24px 20px;
+    }
+
+    .depoimento-texto {
+        font-size: 15px;
+    }
+}
 </style>
 
 </head>
@@ -1627,10 +2016,7 @@ footer {
 
             <p class="hero-description">
 
-                Oferecemos praticidade, conforto e segurança.
-                Você monitora o seu bem material, seu funcionário
-                ou seu ente querido a qualquer momento e em
-                qualquer lugar.
+                Você com total controle do seu veículo, bloquei em qualquer lugar do brasil, com apenas um cliquei bloqueia seu veiculo na mesma hora, sem precisa acionar suporte , tuno pelo seu smart phone Android ou IOS.
 
             </p>
 
@@ -2248,6 +2634,104 @@ footer {
 
 </section>
 
+
+<section class="depoimentos" id="depoimentos">
+    <div class="container">
+
+        <div class="depoimentos-topo">
+            <span class="depoimentos-tag">CLIENTES G7</span>
+            <h2>Quem confia na G7, recomenda</h2>
+            <p>
+                Segurança, tecnologia e tranquilidade para quem não abre mão
+                de proteger o seu veículo.
+            </p>
+        </div>
+
+        <div class="depoimentos-grid">
+
+            <!-- ANA -->
+            <div class="depoimento-card">
+                <div class="estrelas">★★★★★</div>
+
+                <p class="depoimento-texto">
+                    “Instalei para proteger o carro da família. O atendimento
+                    foi excelente e agora tenho paz de espírito quando meu
+                    marido viaja.”
+                </p>
+
+                <div class="cliente">
+                    <div class="cliente-avatar">A</div>
+
+                    <div>
+                        <strong>Ana Costa</strong>
+                        <span>Dona de Casa</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARLOS -->
+            <div class="depoimento-card">
+                <div class="estrelas">★★★★★</div>
+
+                <p class="depoimento-texto">
+                    “A G7 salvou meu carro duas vezes! O sistema funcionou
+                    perfeitamente e a equipe de recuperação é muito eficiente.
+                    Recomendo para todos.”
+                </p>
+
+                <div class="cliente">
+                    <div class="cliente-avatar">C</div>
+
+                    <div>
+                        <strong>Carlos Silva</strong>
+                        <span>Empresário</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MARIA -->
+            <div class="depoimento-card">
+                <div class="estrelas">★★★★★</div>
+
+                <p class="depoimento-texto">
+                    “Gerencio uma frota de 50 veículos com a G7. O controle é
+                    total e os relatórios são muito detalhados. Excelente
+                    custo-benefício!”
+                </p>
+
+                <div class="cliente">
+                    <div class="cliente-avatar">M</div>
+
+                    <div>
+                        <strong>Maria Santos</strong>
+                        <span>Gerente de Frota</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JOÃO -->
+            <div class="depoimento-card">
+                <div class="estrelas">★★★★★</div>
+
+                <p class="depoimento-texto">
+                    “Como trabalho com o carro todos os dias, a segurança é
+                    fundamental. Com a G7 tenho tranquilidade total. O app é
+                    muito fácil de usar.”
+                </p>
+
+                <div class="cliente">
+                    <div class="cliente-avatar">J</div>
+
+                    <div>
+                        <strong>João Oliveira</strong>
+                        <span>Motorista de App</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <!-- ==================================================
      DOWNLOAD
