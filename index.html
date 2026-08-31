@@ -1546,12 +1546,194 @@ width: 416px;
     font-size: 13px;
 }
 
+.contato-section {
+    padding: 100px 0;
+    background: #06111f;
+}
 
+.contato-topo {
+    max-width: 720px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.contato-topo > span {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 7px 15px;
+
+    background: rgba(24, 200, 255, .08);
+    border: 1px solid rgba(24, 200, 255, .25);
+    border-radius: 30px;
+
+    color: #18c8ff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.contato-topo h2 {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: 40px;
+}
+
+.contato-topo p {
+    margin: 0;
+    color: #91a5bb;
+    font-size: 17px;
+}
+
+/* CARDS */
+
+.contato-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.contato-card {
+    display: flex;
+    gap: 20px;
+
+    padding: 28px;
+
+    background: #0b1928;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 18px;
+
+    transition: .3s;
+}
+
+.contato-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(24,200,255,.30);
+}
+
+.contato-icon {
+    width: 55px;
+    height: 55px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(24,200,255,.10);
+    border-radius: 14px;
+
+    font-size: 25px;
+}
+
+.contato-card small {
+    color: #18c8ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.contato-card h3 {
+    margin: 5px 0 8px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.contato-card p {
+    margin: 0 0 10px;
+    color: #91a5bb;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.contato-link {
+    color: #18c8ff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* CHAMADA FINAL */
+
+.contato-cta {
+    margin-top: 25px;
+    padding: 25px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(24,200,255,.12),
+        rgba(24,200,255,.04)
+    );
+
+    border: 1px solid rgba(24,200,255,.20);
+    border-radius: 18px;
+}
+
+.contato-cta strong {
+    color: #fff;
+    font-size: 20px;
+}
+
+.contato-cta p {
+    margin: 3px 0 0;
+    color: #91a5bb;
+}
+
+.contato-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 22px;
+
+    background: #25d366;
+    color: #fff;
+
+    border-radius: 10px;
+
+    font-weight: 800;
+    white-space: nowrap;
+
+    transition: .3s;
+}
+
+.contato-whatsapp:hover {
+    transform: translateY(-2px);
+}
 /* =====================================================
    DEPOIMENTOS - CELULAR
 ===================================================== */
 
 @media (max-width: 768px) {
+
+     .contato-section {
+        padding: 65px 0;
+    }
+
+    .contato-topo h2 {
+        font-size: 30px;
+    }
+
+    .contato-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-card {
+        padding: 22px 18px;
+    }
+
+    .contato-cta {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contato-whatsapp {
+        width: 100%;
+    }
 
     .depoimentos {
         padding: 65px 0;
@@ -2722,7 +2904,111 @@ width: 416px;
 
 </section>
 
+<section class="contato-section" id="contato">
+    <div class="container">
 
+        <div class="contato-topo">
+            <span>FALE COM A G7</span>
+            <h2>Estamos prontos para atender você</h2>
+            <p>
+                Entre em contato com nossa equipe ou venha conhecer
+                nossa unidade em São Paulo.
+            </p>
+        </div>
+
+        <div class="contato-grid">
+
+            <!-- ENDEREÇO -->
+            <div class="contato-card">
+                <div class="contato-icon">📍</div>
+                <div>
+                    <small>ENDEREÇO</small>
+                    <h3>G7 Rastreamento Veicular</h3>
+                    <p>
+                        Av. da Barreira Grande, 887<br>
+                        Jardim Colorado<br>
+                        São Paulo - SP, 03386-000
+                    </p>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=Av.+da+Barreira+Grande,+887,+Jardim+Colorado,+São+Paulo+-+SP,+03386-000"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="contato-link">
+                        Ver no mapa →
+                    </a>
+                </div>
+            </div>
+
+            <!-- HORÁRIO -->
+            <div class="contato-card">
+                <div class="contato-icon">🕐</div>
+                <div>
+                    <small>ATENDIMENTO</small>
+                    <h3>Horário de atendimento</h3>
+                    <p>
+                        Atendimento a partir das 08:00.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TELEFONE -->
+            <div class="contato-card">
+                <div class="contato-icon">📞</div>
+                <div>
+                    <small>TELEFONE / WHATSAPP</small>
+                    <h3>(11) 97026-6391</h3>
+                    <p>
+                        Fale diretamente com nossa equipe pelo WhatsApp.
+                    </p>
+
+                    <a href="https://wa.me/5511970266391?text=Ol%C3%A1%21%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os%20da%20G7."
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="contato-link">
+                        Chamar no WhatsApp →
+                    </a>
+                </div>
+            </div>
+
+            <!-- SITE -->
+            <div class="contato-card">
+                <div class="contato-icon">🌐</div>
+                <div>
+                    <small>SITE</small>
+                    <h3>G7 Rastreamento Veicular</h3>
+                    <p>
+                        Acesse nosso site e conheça nossos serviços
+                        de rastreamento e proteção veicular.
+                    </p>
+
+                    <a href="https://g7rastreamentoveicular.com.br/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="contato-link">
+                        Acessar site →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="contato-cta">
+            <div>
+                <strong>Quer proteger seu veículo?</strong>
+                <p>Fale agora com a equipe da G7.</p>
+            </div>
+
+            <a href="https://wa.me/5511970266391?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20o%20rastreamento%20veicular%20da%20G7."
+               target="_blank"
+               rel="noopener noreferrer"
+               class="contato-whatsapp">
+                💬 Falar no WhatsApp
+            </a>
+        </div>
+
+    </div>
+</section>
 <!-- ==================================================
      WHATSAPP
 ================================================== -->
